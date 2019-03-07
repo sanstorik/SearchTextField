@@ -24,7 +24,7 @@ open class SearchTextField: UITextField {
     
     /// Indicate if keyboard is showing or not
     open var keyboardIsShowing = false
-
+    
     /// How long to wait before deciding typing has stopped
     open var typingStoppedDelay = 0.8
     
@@ -40,7 +40,7 @@ open class SearchTextField: UITextField {
                 
                 self.placeholderLabel?.textColor = placeholderColor
             }
-           
+            
             if let hightlightedFont = self.highlightAttributes[.font] as? UIFont {
                 self.highlightAttributes[.font] = hightlightedFont.withSize(self.theme.font.pointSize)
             }
@@ -114,7 +114,7 @@ open class SearchTextField: UITextField {
     
     /// Min number of characters to start filtering
     open var minCharactersNumberToStartFiltering: Int = 0
-
+    
     /// Force no filtering (display the entire filtered data source)
     open var forceNoFiltering: Bool = false
     
@@ -126,7 +126,7 @@ open class SearchTextField: UITextField {
     
     /// Set the results list's header
     open var resultsListHeader: UIView?
-
+    
     // Move the table around to customize for your layout
     open var tableXOffset: CGFloat = 0.0
     open var tableYOffset: CGFloat = 0.0
@@ -530,7 +530,7 @@ open class SearchTextField: UITextField {
         guard let frame = self.superview?.convert(self.frame, to: UIApplication.shared.keyWindow) else { return }
         if let keyboardFrame = keyboardFrame {
             var newFrame = frame
-            newFrame.size.height += theme.cellHeight
+            newFrame.size.height += (theme.cellHeight * CGFloat(maxNumberOfResults))
             
             if keyboardFrame.intersects(newFrame) {
                 direction = .up
